@@ -48,7 +48,7 @@ public class Login extends FragmentBase {
 		int margin = ((PhotoSpot) getActivity()).dpToPx(5);
 		params.setMargins(0, 0, margin, 0);
 		image.setLayoutParams(params);
-		image.setImageBitmap(((PhotoSpot) getActivity()).loadBitmap("ic_photo_camera_black_48dp.png"));
+		((PhotoSpot) getActivity()).loadBitmapTo(image, "ic_photo_camera_black_48dp.png");
 		return image;
 	}
 
@@ -64,11 +64,7 @@ public class Login extends FragmentBase {
 		button.setText("Login");
 		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				getActivity().getFragmentManager()
-					.beginTransaction()
-					.replace(android.R.id.content, new Home())
-					.addToBackStack(null)
-					.commit();
+				((PhotoSpot) getActivity()).push(new Main());
 			}
 		});
 		return button;
