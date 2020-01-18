@@ -1,0 +1,17 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "."
+		}
+	],
+	"build_systems":
+	[
+		{
+			"name": "Android",
+			"working_dir": "$project_path",
+			"shell_cmd": "./build.sh"
+		}
+	]
+}
