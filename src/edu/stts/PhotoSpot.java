@@ -12,12 +12,14 @@ import android.util.Log;
 import android.widget.ImageView;
 
 import java.util.HashMap;
+import android.graphics.drawable.ColorDrawable;
 
 public class PhotoSpot extends Activity {
 
 	private HashMap<String, Bitmap> cache = new HashMap<>();
 
 	public void onCreate(Bundle b) {
+		getWindow().setBackgroundDrawable(new ColorDrawable(0xffffffff));
 		super.onCreate(b);
 		getFragmentManager()
 			.beginTransaction()

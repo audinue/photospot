@@ -31,7 +31,7 @@ echo "aapt (add)..."
 aapt a $UNSIGNED_APK classes.dex
 
 echo "jarsigner..."
-jarsigner -keystore ../debug.keystore -storepass android -keypass android -signedjar $UNALIGNED_APK $UNSIGNED_APK androiddebugkey
+jarsigner -sigalg MD5withRSA -digestalg SHA1 -keystore ../debug.keystore -storepass android -keypass android -signedjar $UNALIGNED_APK $UNSIGNED_APK androiddebugkey
 
 echo "zipalign..."
 zipalign -f 4 $UNALIGNED_APK $FINAL_APK
@@ -40,13 +40,6 @@ echo "install..."
 adb install -r $FINAL_APK
 
 cd ..
-
-echo "wake up..."
-if adb shell dumpsys power | grep -q 'Display Power: state=OFF' ; then
-	adb shell input keyevent 82
-else
-	adb shell input tap 0 0
-fi
 
 echo "start..."
 adb shell am start -a android.intent.action.MAIN -n edu.stts/.PhotoSpot
